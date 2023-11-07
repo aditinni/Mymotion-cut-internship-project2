@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@700&family=Oswald&family=Poppins&family=Roboto+Condensed:wght@300&display=swap');
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        
+    }
+    
+   
+    body{
+        font-family: 'Edu TAS Beginner', cursive;
+font-family: 'Oswald', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+
+
+    }
+    .section1{
+        background: url("https://i.pinimg.com/originals/54/0e/1b/540e1b9b20e16d1fca8ebfe0eb4a6b95.jpg");
+
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    }
+    @media screen and (max-width:550px)
+    {
+        .section1{
+            width: 150vw;
+            height: 150vh;
+            background-size: cover;
+            background-position: center;
+        }
+        #form{
+            top: 70%;
+            left: 70%;
+        }
+       
+    }
+
+    form
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        margin: 10px;
+        position: absolute;
+        transform:translate(-50%,-50%);
+        top: 50%;
+        left: 50%;    
+        border: 2px solid white;
+        
+        width: 500px;
+        min-height: 600px;
+        background: rgba( 255, 255, 255, 0.15 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 2.5px );
+-webkit-backdrop-filter: blur( 2.5px );
+border-radius: 10px;
+
+    }
+    
+    form input{
+        padding: 10px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        width: 200px;
+        transition: linear 0.5s;
+        font-size: 16px;
+        background-color:transparent;
+        color: white;
+    
+    
+    }
+    form input:focus{
+        outline: none;
+        width: 300px;
+        transition: linear 0.5s;
+        border-color: rgb(0, 132, 255);
+       
+    }
+    .user{
+        right: 70px;
+    }
+    #email{
+        right: 80px;
+    }
+
+    form label{
+        position: relative;
+        bottom: 52px;
+        right: 35px;
+        height: 100%;
+        display: flex;
+        transition: 300ms ease;
+        font-size: 20px;
+        color: white;
+
+
+    }
+    h1{
+        color: black;
+        text-shadow: 2px 2px 10px black;
+    }
+
+    input:focus +label,
+    input:not(:placeholder-shown)+label{
+        transform: translateY(-30px);
+    }
+     img{
+        width: 20px;
+        position: absolute;
+        left: 56%;
+        top: 54%;
+        z-index: 100;
+        cursor: pointer;
+    }
+  #warning1{
+    color: red;
+    position: relative;
+    bottom: 50px;
+    left: 32px;
+    display: none;
+    font-size: 20px;
+        text-shadow: 2px 2px 10px;
+  } 
+    button{
+        padding: 14px 19px;
+        position: relative;
+        bottom: 20px;
+        border: none;
+        border-radius: 10px;
+        background-color:rgb(242, 137, 76);
+        color: white;
+        box-shadow: 5px 5px black;
+        font-weight: bolder;
+        width: 90%;
+        cursor: pointer;
+        font-family: 'Oswald', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+        
+
+    }
+    button:active{
+        box-shadow: 0px 0px;
+        background-color: brown;
+        transform: translate(5px,5px);
+        transition: all 0.5s;
+    }
+    #warning2{
+        position: relative;
+        right: 40px;
+        bottom: 50px;
+        color:red;
+        font-weight: bolder;
+        display: none;
+        font-size: 20px;
+        text-shadow: 2px 2px 10px;
+    }
+    #mail{
+        position: relative;
+        right: 40px;
+        bottom: 50px;
+        color:red;
+        font-weight: bolder;
+        display: none;
+        font-size: 20px;
+        text-shadow: 2px 2px 10px;
+
+    }
+    #strength{
+        position: fixed;
+        top: 382px;
+        right: 216px;
+        font-size: 20px;
+        text-shadow: 2px 2px 10px;
+    }
+   
+  
+
+</style>
+<body>
+    <div class="section1">
+        <form id="form">
+            <h1>Register</h1>
+            <p id="strength"></p>
+            <input type="text" required placeholder="" id="use">
+            <label class="user" >Username</label>
+            <p id="warning1">Username must contain special characters</p>
+            <input type="email" required placeholder="" id="ema">
+            <label class="user" id="email">Email</label>
+            <p id="mail"></p>
+            <input type="password" required placeholder="" id="pass">
+          
+           
+            
+            <label class="user">Password</label>
+    
+            <input type="password" required placeholder="" id="con"> 
+            <label>Confirm Password</label>
+            <p id="warning2"></p>
+    
+         <button type="submit" id="but">Register</button>
+        </form>
+    </div>
+  
+      
+       
+   
+   
+  
+        <script>
+            let but = document.getElementById("but");
+            let pass = document.getElementById("pass");
+            let con = document.getElementById("con");
+            let use = document.getElementById("use");
+            let email = document.getElementById("ema");
+            const usernameRegex = /[$@%&*!]/;
+            const emailRegex = /\S+@\S+\.\S/;
+        
+          
+            but.addEventListener("click", () => {
+                if (validateForm()) {
+                    alert("Registered successfully!");
+                }
+            });
+            pass.addEventListener("input",()=>{
+                if(pass.value.length<5)
+                {
+                    document.getElementById("strength").innerHTML="Weak password"
+                    document.getElementById("strength").style.color="red"
+                }
+                else if(pass.value.length>=5 && pass.value.length<8)
+                {
+                    document.getElementById("strength").innerHTML="Medium Password"
+                    document.getElementById("strength").style.color="orange"
+
+                }
+                else if(pass.value.length>=8)
+                {
+                    document.getElementById("strength").innerHTML="Strong password"
+                    document.getElementById("strength").style.color="lightgreen"
+                }
+                else
+                {
+                    document.getElementById("strength").style.display="none"
+                   
+                }
+            })
+        
+            use.addEventListener("input", () => {
+                const usevalue = use.value;
+                const validu = usernameRegex.test(usevalue);
+        
+                if (!validu) {
+                    document.getElementById("warning1").style.display = "block";
+                } else {
+                    document.getElementById("warning1").style.display = "none";
+                }
+            });
+        
+            con.addEventListener("input", () => {
+                const confirmation = con.value;
+                const password = pass.value;
+                const warning2 = document.getElementById("warning2");
+        
+                if (confirmation !== password) {
+                    warning2.style.display = "block";
+                    warning2.innerHTML = "Password does not match";
+                    warning2.style.color = "red";
+                } else {
+                    warning2.style.display = "none";
+                }
+            });
+        
+            email.addEventListener("input", () => {
+                const vali = emailRegex.test(email.value);
+                const mail = document.getElementById("mail");
+        
+                if (vali) {
+                    mail.style.display = "block";
+                    mail.innerHTML = "Email Verified";
+                    mail.style.color = "lightgreen";
+                } else {
+                    mail.style.display = "none";
+                }
+            });
+        
+            function validateForm() {
+                const usevalue = use.value;
+                const confirmation = con.value;
+                const password = pass.value;
+                const vali = emailRegex.test(email.value);
+        
+                if (!usernameRegex.test(usevalue)) {
+                    document.getElementById("warning1").style.display = "block";
+                    return false;
+                } else {
+                    document.getElementById("warning1").style.display = "none";
+                }
+        
+                if (confirmation !== password) {
+                    document.getElementById("warning2").style.display = "block";
+                    document.getElementById("warning2").innerHTML = "Password does not match";
+                    document.getElementById("warning2").style.color = "red";
+                    return false;
+                } else {
+                    document.getElementById("warning2").style.display = "none";
+                }
+        
+                if (!vali) {
+                    document.getElementById("mail").style.display = "none";
+                    return false;
+                } else {
+                    document.getElementById("mail").style.display = "block";
+                    document.getElementById("mail").innerHTML = "Email Verified";
+                    document.getElementById("mail").style.color = "green";
+                }
+        
+                return true;
+            }
+
+            const labels = document.querySelectorAll('label');
+        labels.forEach(label => {
+            label.addEventListener('click', () => {
+                label.style.transform = 'translateY(-30px)';
+            });
+        });
+
+            
+
+          
+        </script>
+        
+</body>
+</html>
